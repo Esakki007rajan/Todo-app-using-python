@@ -4,39 +4,32 @@ from tkinter import messagebox
 def add_task():
     task = entry.get()
     if task:
-        listbox.insert(tk.END,task)
+        listbox.insert(tk.END, task)
         entry.delete(0, tk.END)
     else:
-        messagebox.showwarning("Input Error", "Please enter a task" )
+        messagebox.showwarning("Input Error", "Please enter a task")
 
-def remove_tas():
+def remove_task():
     try:
         selected = listbox.curselection()
-        listbox.delete(selected)
+        listbox.delete(selected[0])
     except:
-        messagebox.showwarning("selection Error", " Please select a tak to delete")
+        messagebox.showwarning("Selection Error", "Please select a task to delete")
 
 root = tk.Tk()
 root.title("To Do List App")
 root.geometry("500x500")
 
 entry = tk.Entry(root, width=45)
-entry.pack(pady = 10)
+entry.pack(pady=10)
 
 add_button = tk.Button(root, text="Add Task", width=20, command=add_task)
-add_button.pack(pady = 5)
+add_button.pack(pady=5)
 
 listbox = tk.Listbox(root, width=40, height=10)
 listbox.pack(pady=10)
 
-remove_button = tk.Button(root, text="Remove selected", width=10, command="removr_task")
+remove_button = tk.Button(root, text="Remove Selected", width=20, command=remove_task)
 remove_button.pack(pady=5)
 
 root.mainloop()
-
-
-
-
-
-
-
